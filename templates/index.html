@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cat Classifier</title>
+    <script>
+        function previewImage() {
+            var fileInput = document.getElementById('fileInput');
+            var imagePreview = document.getElementById('imagePreview');
+            var classifyButton = document.getElementById('classifyButton');
+
+            var file = fileInput.files[0];
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                imagePreview.src = e.target.result;
+                classifyButton.disabled = false;  // Enable classify button once an image is selected
+            };
+
+            reader.readAsDataURL(file);
+        }
+    </script>
+</head>
+<body>
+    <h1>Cat Classifier</h1>
+    <form action="/classify" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" id="fileInput" accept=".png, .jpg, .jpeg" onchange="previewImage()" required>
+        <button type="submit" id="classifyButton" disabled>Classify</button>
+    </form>
+    <div>
+        <h2>Selected Image</h2>
+        <img id="imagePreview" alt="Selected Image" style="max-width: 400px; max-height: 400px;">
+    </div>
+</body>
+</html>

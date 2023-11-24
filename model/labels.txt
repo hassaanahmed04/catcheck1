@@ -1,0 +1,5 @@
+0 Abyssinian
+1 Bengal
+2 Birman
+3 Bombay
+4 British_Shorthair
